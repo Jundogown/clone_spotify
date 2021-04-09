@@ -15,7 +15,6 @@ const Body = () => {
     return(
         <div>
             <BodyContainer>
-                
             </BodyContainer>
         </div>
     );
