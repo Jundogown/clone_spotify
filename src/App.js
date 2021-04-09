@@ -10,25 +10,20 @@ const App = () => {
 
     useEffect(()=> {
         const hash = getTokenFromResponse();
-        window.location.hash = "";
         const token = hash.access_token;
 
         console.log('token', token);
 
-        const userManager = {
-          token : token,
-        };
-
-        console.log(userManager);
+        window.sessionStorage.setItem('token', token);
 
         setToken(token);
-        
+
     }, []);
     return(
         <div className="login">
-          {/* {!token && <Login/>}
-          {token && <Main/>} */}
-          <Main/>
+          {!token && <Login/>}
+          {token && <Main/>}
+          {/* <Main/> */}
         </div>
     )
 }
