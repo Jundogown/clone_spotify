@@ -3,10 +3,9 @@ import styled from 'styled-components';
 import Option from './atoms/Option';
 import Line from './atoms/Line';
 import HomeIcon from '@material-ui/icons/Home';
-import AddIcon from '@material-ui/icons/Add';
+import Button from './Button';
 import SearchIcon from '@material-ui/icons/Search';
 import LibraryMusicIcon from '@material-ui/icons/LibraryMusic';
-import LikeIcon from '@material-ui/icons/Favorite';
 import axios from 'axios';
 
 const SideBackground = styled.div`
@@ -45,8 +44,8 @@ const PrintList = styled.div`
     padding-bottom: 8px;
 `;
 
-const Sidebar = () => {
 
+const Sidebar = () => {
     const [playList, setPlayList] = useState([]);
     const token = sessionStorage.getItem('token');
     // const user_id = sessionStorage.getItem('userId');
@@ -83,8 +82,8 @@ const Sidebar = () => {
                 <Option Icon={HomeIcon} title="Home"/>
                 <Option Icon={SearchIcon} title="Search"/>
                 <Option Icon={LibraryMusicIcon} title="Library"/>
-                <Option Icon={AddIcon} title="Create Playlist"/>
-                <Option Icon={LikeIcon} title="Like sing"/>
+
+                <Button/>
 
                 <StringTitle>PLAYLIST</StringTitle>
                 <Line/>
