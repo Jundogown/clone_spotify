@@ -3,8 +3,10 @@ import styled from 'styled-components';
 import Option from './atoms/Option';
 import Line from './atoms/Line';
 import HomeIcon from '@material-ui/icons/Home';
+import AddIcon from '@material-ui/icons/Add';
 import SearchIcon from '@material-ui/icons/Search';
 import LibraryMusicIcon from '@material-ui/icons/LibraryMusic';
+import LikeIcon from '@material-ui/icons/Favorite';
 import axios from 'axios';
 
 const SideBackground = styled.div`
@@ -81,6 +83,8 @@ const Sidebar = () => {
                 <Option Icon={HomeIcon} title="Home"/>
                 <Option Icon={SearchIcon} title="Search"/>
                 <Option Icon={LibraryMusicIcon} title="Library"/>
+                <Option Icon={AddIcon} title="Create Playlist"/>
+                <Option Icon={LikeIcon} title="Like sing"/>
 
                 <StringTitle>PLAYLIST</StringTitle>
                 <Line/>
