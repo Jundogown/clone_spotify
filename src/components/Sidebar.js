@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from 'styled-components';
 import Option from './atoms/Option';
 import Line from './atoms/Line';
@@ -33,23 +33,46 @@ const StringTitle = styled.span`
     margin: 0;
 `;
 
-const Sidebar = () => {
-    const token = sessionStorage.getItem('token');
-    const user_id = sessionStorage.getItem('userId');
+const PrintList = styled.div`
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 30vh;
+    height: 20px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+`;
 
-    axios({
-        headers: {
-            "Authorization": `Bearer ${token}`
-        },
-        method: 'GET',
-        url: `https://api.spotify.com/v1/users/${user_id}/playlists`,
-    }).then((res) => {
-        console.log(res);
-        console.log(res.data.item);
-        
-    }).catch(error => {
-        console.log(error);
-    });
+const Sidebar = () => {
+
+    const [playList, setPlayList] = useState([]);
+    const token = sessionStorage.getItem('token');
+    // const user_id = sessionStorage.getItem('userId');
+    // console.log(user_id);
+
+    useEffect(() => {
+        axios({
+            headers: {
+                "Authorization": `Bearer ${token}`
+            },
+            method: 'GET',
+            // url: `https://api.spotify.com/v1/users/${user_id}/playlists`,
+            url: `https://api.spotify.com/v1/me/playlists`,
+        }).then((res) => {
+            console.log(res);
+            console.log(res.data.items[0].name);
+            // setArray()
+            let playlist = [];
+            for(let i = 0; i<res.data.items.length; i++){
+                playlist = [res.data.items];
+            }
+            
+            setPlayList(playlist[0]);
+    
+        }).catch(error => {
+            console.log(error);
+        });
+    }, []);
     
     return(
         <div>
@@ -61,11 +84,13 @@ const Sidebar = () => {
 
                 <StringTitle>PLAYLIST</StringTitle>
                 <Line/>
-
+                    {
+                        playList.map(({ name }) => <PrintList>{name}</PrintList>)
+                    }
                 <Option/>
             </SideBackground>
         </div>
     );
 }
 
-export default Sidebar;
+export default Sidebar; 
