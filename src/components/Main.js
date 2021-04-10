@@ -24,7 +24,6 @@ const Main = () => {
         console.log(res);
         const userid = res.data.id;
         sessionStorage.setItem("userId", userid);
-        
     }).catch(error => {
         console.log(error);
     });
