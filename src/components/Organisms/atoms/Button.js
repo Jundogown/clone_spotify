@@ -25,7 +25,8 @@ const Icon = styled.div`
     padding-right: 10px;
 `;
 
-const Button = ({ title , Icon }) => {
+const Button = ({ title , Icon
+ }) => {
     return(
         <ButtonOption>
             {Icon && <Icon/>}
