@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import styled from 'styled-components';
-import Option from './atoms/Option';
-import Line from './atoms/Line';
+import Option from './Organisms/atoms/Option';
+import Line from './Organisms/atoms/Line';
 import HomeIcon from '@material-ui/icons/Home';
-import Button from './atoms/Button';
+import Button from './Organisms/atoms/Button';
 import SearchIcon from '@material-ui/icons/Search';
 import LibraryMusicIcon from '@material-ui/icons/LibraryMusic';
 import axios from 'axios';
@@ -15,6 +15,14 @@ const SideBackground = styled.div`
     padding-left: 10px;
     padding-right: 10px;
     min-width: 230px;
+
+
+
+
+
+
+
+    
     height: 91vh;
     color: white;
     background-color: #040404;
@@ -47,7 +55,7 @@ const PrintList = styled.div`
 const Sidebar = () => {
     const [playList, setPlayList] = useState([]);
     const token = sessionStorage.getItem('token');
-    // const user_id = sessionStorage.getItem('userId');
+    const user_id = sessionStorage.getItem('userId');
     // console.log(user_id);
 
     useEffect(() => {
@@ -56,8 +64,12 @@ const Sidebar = () => {
                 "Authorization": `Bearer ${token}`
             },
             method: 'GET',
-            // url: `https://api.spotify.com/v1/users/${user_id}/playlists`,
-            url: `https://api.spotify.com/v1/me/playlists`,
+            url: `https://api.spotify.com/v1/users/${user_id}/playlists`,
+            // url: `https://api.spotify.com/v1/me/playlists`,
+            data: {
+                limit: "15",
+                offset: "10",
+            }
         }).then((res) => {
             console.log(res);
             console.log(res.data.items[0].name);
@@ -73,31 +85,31 @@ const Sidebar = () => {
             console.log(error);
         });
     }, []);
-    
-    const buttonClick = () => {
-        const token = sessionStorage.getItem('token');
-        const user_id = sessionStorage.getItem('userId');
-        
-        console.log('안녕');
 
-        axios({
-            headers: {
-                "Authorization": `Bearer ${token}`,
-            }, method: 'POST',
-            url: `https://api.spotify.com/v1/users/${user_id}/playlists`,
-            data: {
-                name: "내플레이리스트",
-                public: true,
-                collaborative: false,
-                description: "안녕하세요 반가워요 저리가세요"
-            },
-        }).then((res) => {
-            console.log(res);
+    // async function buttonClick() {
+        
+    //     console.log('안녕');
+
+    //     axios({
+    //         headers: {
+    //             "Authorization": `Bearer ${token}`,
+    //         }, 
+    //         method: 'POST',
+    //         url: `https://api.spotify.com/v1/users/b30w7igvenuo3cclg5y0c7ddn/playlists`,
+    //         data: {
+    //             name: "내플레이리스트",
+    //             public: true,
+    //             collaborative: "",
+    //             description: "",
+    //             'Content-Type': "application/json"
+    //         },
+    //     }).then((res) => {
+    //         console.log(res);
     
-        }).catch(error => {
-            console.log(error);
-        });
-    }
+    //     }).catch(error => {
+    //         console.log(error);
+    //     });
+    // }
 
     return(
         <div>
@@ -108,7 +120,7 @@ const Sidebar = () => {
                 <Option Icon={LibraryMusicIcon} title="Library"/>
 
                 {/* <Button onClick={buttonClick} title="안녕"/> */}
-                <button onClick={buttonClick}>하이</button>
+                {/* <button onClick={buttonClick}>하이</button> */}
 
                 <StringTitle>PLAYLIST</StringTitle>
                 <Line/>
