@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
 import Login from './components/Login';
-import { getTokenFromResponse } from './components/atoms/spotify';
+import { getTokenFromResponse } from './components/spotify';
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 import Main from './components/Main';
 
