@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Option from './atoms/Option';
 import Line from './atoms/Line';
 import HomeIcon from '@material-ui/icons/Home';
-import Button from './Button';
+import Button from './atoms/Button';
 import SearchIcon from '@material-ui/icons/Search';
 import LibraryMusicIcon from '@material-ui/icons/LibraryMusic';
 import axios from 'axios';
@@ -44,7 +44,6 @@ const PrintList = styled.div`
     padding-bottom: 8px;
 `;
 
-
 const Sidebar = () => {
     const [playList, setPlayList] = useState([]);
     const token = sessionStorage.getItem('token');
@@ -75,6 +74,31 @@ const Sidebar = () => {
         });
     }, []);
     
+    const buttonClick = () => {
+        const token = sessionStorage.getItem('token');
+        const user_id = sessionStorage.getItem('userId');
+        
+        console.log('안녕');
+
+        axios({
+            headers: {
+                "Authorization": `Bearer ${token}`,
+            }, method: 'POST',
+            url: `https://api.spotify.com/v1/users/${user_id}/playlists`,
+            data: {
+                name: "내플레이리스트",
+                public: true,
+                collaborative: false,
+                description: "안녕하세요 반가워요 저리가세요"
+            },
+        }).then((res) => {
+            console.log(res);
+    
+        }).catch(error => {
+            console.log(error);
+        });
+    }
+
     return(
         <div>
             <SideBackground>
@@ -83,7 +107,8 @@ const Sidebar = () => {
                 <Option Icon={SearchIcon} title="Search"/>
                 <Option Icon={LibraryMusicIcon} title="Library"/>
 
-                <Button/>
+                {/* <Button onClick={buttonClick} title="안녕"/> */}
+                <button onClick={buttonClick}>하이</button>
 
                 <StringTitle>PLAYLIST</StringTitle>
                 <Line/>
