@@ -1,4 +1,5 @@
 import react from 'react';
+import Search from './atoms/Search'
 import styled from 'styled-components';
 
 const BodyContainer = styled.div`
@@ -15,9 +16,10 @@ const Body = () => {
     return(
         <div>
             <BodyContainer>
+                <Search/>
             </BodyContainer>
         </div>
     );
 }
 
-export default Body;
+export default Body;    
