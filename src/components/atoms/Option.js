@@ -12,7 +12,7 @@ const SidebarOption = styled.div`
     &:hover {
         color: #ffffff;
     }
-`
+`;
 
 const Span = styled.span`
     margin-top: 8px;
