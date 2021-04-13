@@ -15,14 +15,6 @@ const SideBackground = styled.div`
     padding-left: 10px;
     padding-right: 10px;
     min-width: 230px;
-
-
-
-
-
-
-
-    
     height: 91vh;
     color: white;
     background-color: #040404;
