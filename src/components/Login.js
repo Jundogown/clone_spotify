@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { accessUrl } from './atoms/spotify';
+import { accessUrl } from './spotify';
 
 const LoginBackground = styled.div`
     display: grid;
