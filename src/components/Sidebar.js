@@ -17,7 +17,7 @@ const SideBackground = styled.div`
     min-width: 230px;
     height: 91vh;
     color: white;
-    background-color: #040404;
+    background-color: #000000;
 `;
 
 const LogoImg = styled.img`
