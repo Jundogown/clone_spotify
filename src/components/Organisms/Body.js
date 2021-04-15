@@ -1,4 +1,4 @@
-import react from 'react';
+import react, { useState } from 'react';
 import Search from './atoms/Search'
 import styled from 'styled-components';
 
@@ -22,4 +22,4 @@ const Body = () => {
     );
 }
 
-export default Body;    
+export default Body;
