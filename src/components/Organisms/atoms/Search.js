@@ -30,6 +30,10 @@ const Search = () => {
         data: '',
     });
 
+    // const [value, setValue] = useState({
+    //     value: '',
+    // });
+
     const token = sessionStorage.getItem('token');
     const { data } = input;
 
@@ -39,14 +43,29 @@ const Search = () => {
           ...input,
           [data]: value
         });
+
         console.log(value);
         const inputData = value;
 
         localStorage.setItem('inputData', inputData);
     }
     
+    // const onList = (e) => {
+    //     let {name, value} = e.target;
+
+    //     this.setState({
+    //         [name]: value,
+    //     });
+
+    //     console.log(value);
+            
+    // }
+
     const onClick = () => {
         const inputData = localStorage.getItem('inputData');
+        const select = document.getElementById('#select');
+
+        console.log(select.value);
 
         axios({
             headers: {  
@@ -58,7 +77,7 @@ const Search = () => {
             url: 'https://api.spotify.com/v1/search',
             params: {
                 q: inputData,
-                type: 'track',
+                type: 'track', 
             },
         }).then((res) => {
             console.log(res);
@@ -67,20 +86,12 @@ const Search = () => {
         })
     }
 
-    // const options = [
-    //     { value: 'Artist', label: 'Artist' },
-    //     { value: 'Music', label: 'Music' },
-    //     { value: 'Album', label: 'Album' }
-    // ]
-
-    // console.log(inputData);
-
     return(
         <div>
             <InputArea>
-                <select name="menu">
+                <select name="menu" id="select" onChange={onClick}>
                     <option value="Artist">Artist</option>
-                    <option value="Music">Music</option>
+                    <option value="Track">Music</option>
                     <option value="Album">Album</option>
                 </select>
                 <SearchBar onChange={onChange} placeholder="Artist, Music..." />
