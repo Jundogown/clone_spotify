@@ -2,7 +2,7 @@ import axios from 'axios';
 import react, { useState } from 'react';
 import './Search.css';
 import styled from 'styled-components';
-import Select from 'react-select'
+import VerticalLine from './VerticalLine';
 
 const SearchBar = styled.input`
     width: 50vh;
@@ -10,7 +10,8 @@ const SearchBar = styled.input`
     font-size: 1.8vh;
     border-radius: 100px;
     border: none;
-    padding-left: 20px;
+    padding-top: 0.4vh;
+    padding-left: 1vh;
     background-color: white;
     outline: none;
     &:focus{
@@ -22,6 +23,7 @@ const InputArea = styled.div`
     width: 60vh;
     height: 4vh;
     display: flex;
+    border-radius: 100px;
     background-color: #ffffff;
 `
 
@@ -39,6 +41,8 @@ const Search = () => {
     const { data } = input;
 
     const onChange = (e) => {
+        localStorage.setItem('inputData', 'artist');
+
         const { value, data } = e.target;
         setInput({
           ...input,
@@ -97,7 +101,7 @@ const Search = () => {
                     <option value="album">Album</option>
                 </select>
                 <SearchBar onChange={onChange} placeholder="Artist, Music..." />
-                <button className="btn" onClick={onClick}></button>
+                <button className="btn" onClick={onClick}>Search</button>
             </InputArea>
         </div>
     )
