@@ -30,9 +30,10 @@ const Search = () => {
         data: '',
     });
 
-    // const [value, setValue] = useState({
-    //     value: '',
-    // });
+    const [value, setValue] = useState({
+        value: 'artist',
+    });
+
 
     const token = sessionStorage.getItem('token');
     const { data } = input;
@@ -50,23 +51,24 @@ const Search = () => {
         localStorage.setItem('inputData', inputData);
     }
     
-    // const onList = (e) => {
-    //     let {name, value} = e.target;
+    const onList = (e) => {
+        let {name, value} = e.target;
 
-    //     this.setState({
-    //         [name]: value,
-    //     });
+        setValue({
+            [name]: value,
+        });
 
-    //     console.log(value);
-            
-    // }
+        console.log(e.target.value);
+        const inputType = e.target.value;
+
+        localStorage.setItem('inputType', inputType);
+    }
 
     const onClick = () => {
-        const inputData = localStorage.getItem('inputData');
-        const select = document.getElementById('#select');
+        const inputSearchData = localStorage.getItem('inputData');
+        const inputTypeData = localStorage.getItem('inputType');
 
-        console.log(select.value);
-
+        // console.log(inputTypeData)
         axios({
             headers: {  
                 "Authorization": `Bearer ${token}`,
@@ -76,8 +78,8 @@ const Search = () => {
             method: 'GET',
             url: 'https://api.spotify.com/v1/search',
             params: {
-                q: inputData,
-                type: 'track', 
+                q: inputSearchData,
+                type: inputTypeData,
             },
         }).then((res) => {
             console.log(res);
@@ -89,10 +91,10 @@ const Search = () => {
     return(
         <div>
             <InputArea>
-                <select name="menu" id="select" onChange={onClick}>
-                    <option value="Artist">Artist</option>
-                    <option value="Track">Music</option>
-                    <option value="Album">Album</option>
+                <select name="menu" id="select" onChange={onList}>
+                    <option value="artist">Artist</option>
+                    <option value="track">Music</option>
+                    <option value="album">Album</option>
                 </select>
                 <SearchBar onChange={onChange} placeholder="Artist, Music..." />
                 <button className="btn" onClick={onClick}></button>
