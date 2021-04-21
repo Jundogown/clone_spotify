@@ -36,13 +36,12 @@ const Search = () => {
         value: 'artist',
     });
 
+    sessionStorage.setItem('inputData', 'artist');
 
     const token = sessionStorage.getItem('token');
     const { data } = input;
 
     const onChange = (e) => {
-        localStorage.setItem('inputData', 'artist');
-
         const { value, data } = e.target;
         setInput({
           ...input,
@@ -52,7 +51,7 @@ const Search = () => {
         console.log(value);
         const inputData = value;
 
-        localStorage.setItem('inputData', inputData);
+        sessionStorage.setItem('inputData', inputData);
     }
     
     const onList = (e) => {
@@ -65,12 +64,12 @@ const Search = () => {
         console.log(e.target.value);
         const inputType = e.target.value;
 
-        localStorage.setItem('inputType', inputType);
+        sessionStorage.setItem('inputType', inputType);
     }
 
     const onClick = () => {
-        const inputSearchData = localStorage.getItem('inputData');
-        const inputTypeData = localStorage.getItem('inputType');
+        const inputSearchData = sessionStorage.getItem('inputData');
+        const inputTypeData = sessionStorage.getItem('inputType');
 
         // console.log(inputTypeData)
         axios({
