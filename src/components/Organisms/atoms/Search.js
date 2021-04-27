@@ -1,8 +1,9 @@
 import axios from 'axios';
-import react, { useState } from 'react';
+import React, { useState } from 'react';
 import './Search.css';
 import styled from 'styled-components';
 import VerticalLine from './VerticalLine';
+import { Link } from 'react-router-dom';
 
 const SearchBar = styled.input`
     width: 50vh;
@@ -27,16 +28,23 @@ const InputArea = styled.div`
     background-color: #ffffff;
 `
 
+const ViewArea = styled.div`
+
+`
+
 const Search = () => {
     const [ input, setInput ] = useState({
         data: '',
     });
 
     const [value, setValue] = useState({
-        value: 'artist',
+        value: '',
     });
 
-    sessionStorage.setItem('inputData', 'artist');
+    const [res, setRes] = useState([]);
+
+    // const [loading, setLoading] = useState(false);
+
 
     const token = sessionStorage.getItem('token');
     const { data } = input;
@@ -85,11 +93,17 @@ const Search = () => {
                 type: inputTypeData,
             },
         }).then((res) => {
+            setRes([res]);
+
             console.log(res);
         }).catch(err => {
             console.log(err);
         })
     }
+
+    // if (loading) {
+    //     return <p>Data is loading...</p>;
+    // }
 
     return(
         <div>
@@ -102,6 +116,9 @@ const Search = () => {
                 <SearchBar onChange={onChange} placeholder="Artist, Music..." />
                 <button className="btn" onClick={onClick}>Search</button>
             </InputArea>
+            <ViewArea>
+                
+            </ViewArea>
         </div>
     )
 }
