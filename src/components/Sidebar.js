@@ -56,8 +56,8 @@ const Sidebar = () => {
                 "Authorization": `Bearer ${token}`
             },
             method: 'GET',
-            url: `https://api.spotify.com/v1/users/${user_id}/playlists`,
-            // url: `https://api.spotify.com/v1/me/playlists`,
+            // url: `https://api.spotify.com/v1/users/${user_id}/playlists`,
+            url: `https://api.spotify.com/v1/me/playlists`,
             data: {
                 limit: "15",
                 offset: "10",
@@ -76,7 +76,7 @@ const Sidebar = () => {
         }).catch(error => {
             console.log(error);
         });
-    }, []);
+    }, [token, user_id]);
 
     // async function buttonClick() {
         
