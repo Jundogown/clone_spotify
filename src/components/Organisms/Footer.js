@@ -5,6 +5,10 @@ import SkipPreviousIcon from '@material-ui/icons/SkipPrevious';
 import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline';
 import SkipNextIocn from '@material-ui/icons/SkipNext';
 import RepeatIcon from '@material-ui/icons/Repeat';
+import { Grid, Slider } from '@material-ui/core';
+import PlayListPlayIcon from  '@material-ui/icons/PlaylistPlay';
+import VolumeDownIcon from  '@material-ui/icons/VolumeDown';
+import './Footer.css';
 
 const FooterContainer = styled.div`
     position: fixed;
@@ -19,13 +23,17 @@ const FooterContainer = styled.div`
 
 const FooterLeft = styled.div`
     flex: 0.3;
+    max-width: 420px;
+    display: flex;
+    color: white;
+    align-items: center;
 `;
 
 const FooterCenter = styled.div`
-    flex: 0.5;
+    flex: 0.8;
     padding: 0 100px;
     color: white;
-    display: felx;
+    display: flex;
     align-items: center;
     justify-content: space-between;
     max-width: 300px;
@@ -33,23 +41,60 @@ const FooterCenter = styled.div`
 
 const FooterRight = styled.div`
     flex: 0.25;
+    color: white;
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
 `;
+
+const FooterRightWarp = styled.div`
+    padding-left: 14.4vh;
+    display: flex;
+`
+
+const FooterTrackImg = styled.img`
+    height: 60px;
+    width: 60px;
+    margin-right: 20px;
+    object-fit: contain;
+`
+
+const FooterTrackInfo = styled.div`
+    
+`
 
 const Footer = () => {
     return(
         <FooterContainer>
             <FooterLeft>
-                <span>track name</span>
+                <FooterTrackImg src="" alt="" />
+                <FooterTrackInfo>
+                    <b>name</b>
+                    <br/>
+                    <span>artist</span>
+                </FooterTrackInfo>
             </FooterLeft>
             <FooterCenter>
                 <ShuffleIcon/>
                 <SkipPreviousIcon/>
-                <PlayCircleOutlineIcon/>
+                <PlayCircleOutlineIcon className="playIcon"/>
                 <SkipNextIocn/>
                 <RepeatIcon/>
             </FooterCenter>
             <FooterRight>
-                <Grid></Grid>
+                <FooterRightWarp>
+                    <Grid container spacing={2}>
+                        <Grid>
+                            <PlayListPlayIcon/>
+                        </Grid>
+                        <Grid>
+                            <VolumeDownIcon className="volumDownIcon"/>
+                        </Grid>
+                        <Grid>
+                            <Slider/>
+                        </Grid>
+                    </Grid>
+                </FooterRightWarp>
             </FooterRight>
         </FooterContainer>
     )
