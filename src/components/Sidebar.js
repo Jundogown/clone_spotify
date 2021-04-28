@@ -40,8 +40,15 @@ const PrintList = styled.div`
     white-space: nowrap;
     width: 30vh;
     height: 20px;
-    padding-top: 8px;
-    padding-bottom: 8px;
+    padding-top: 9px;
+    padding-left: 15px;
+    padding-bottom: 9px;
+    color: gray;
+    font-weight: bolder;
+    transition: 200ms color ease-in;
+    :hover{
+        color: #f1f1f1;
+    }
 `;
 
 const Sidebar = () => {
