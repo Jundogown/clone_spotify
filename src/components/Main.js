@@ -1,9 +1,10 @@
-import react from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import Sidebar from './Sidebar';
 import Body from './Organisms/Body';
 import Footer from './Organisms/Footer';
 import Search from './Organisms/atoms/Search';
+import MainView from './Organisms/MainView';
 import axios from 'axios';
 
 const MainContainer = styled.div`
@@ -33,7 +34,8 @@ const Main = () => {
         <div className="player">
             <MainContainer>
                 <Sidebar/>
-                <Body>
+                <Body>  
+                    <MainView/>
                 </Body>
             </MainContainer>
             <Footer/>
