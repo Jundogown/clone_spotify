@@ -23,7 +23,6 @@ const App = () => {
         <div className="login">
           {!token && <Login/>}
           {token && <Main/>}
-          {/* <Main/> */}
         </div>
     )
 }
