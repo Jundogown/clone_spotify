@@ -4,6 +4,10 @@ import './Search.css';
 import styled from 'styled-components';
 import VerticalLine from './VerticalLine';
 import { Link } from 'react-router-dom';
+import SearchArtistView from './SearchView/SearchArtistView';
+import SearchAlbumView from './SearchView/SearchAlbumView';
+import SearchTrackView from './SearchView/SearchTrackView';
+import MainView from './SearchView/MainView';
 
 const SearchBar = styled.input`
     width: 50vh;
@@ -78,7 +82,7 @@ const Search = () => {
     const onClick = () => {
         const inputSearchData = sessionStorage.getItem('inputData');
         const inputTypeData = sessionStorage.getItem('inputType');
-
+        
         // console.log(inputTypeData)
         axios({
             headers: {  
@@ -101,6 +105,7 @@ const Search = () => {
         })
     }
 
+    const inputTypeData = sessionStorage.getItem('inputType');
     // if (loading) {
     //     return <p>Data is loading...</p>;
     // }
@@ -117,7 +122,10 @@ const Search = () => {
                 <button className="btn" onClick={onClick}>Search</button>
             </InputArea>
             <ViewArea>
-                
+                {inputTypeData == 'artist' && <SearchArtistView/>}
+                {inputTypeData == 'track' && <SearchTrackView/>}
+                {inputTypeData == 'album' && <SearchAlbumView/>}
+                {!inputTypeData && <MainView/>}
             </ViewArea>
         </div>
     )
