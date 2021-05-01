@@ -69,9 +69,9 @@ const Footer = () => {
             <FooterLeft>
                 <FooterTrackImg src="" alt="" />
                 <FooterTrackInfo>
-                    <b>name</b>
+                    {<b>Play Music</b>}
                     <br/>
-                    <span>artist</span>
+                    {<span>....</span>}
                 </FooterTrackInfo>
             </FooterLeft>
             <FooterCenter>
