@@ -1,6 +1,6 @@
 import react, { useState } from 'react';
-import Search from './atoms/Search'
 import styled from 'styled-components';
+import Search from '../View/Search'
 
 const BodyContainer = styled.div`
     padding: 30px;
