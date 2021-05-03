@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import styled from 'styled-components';
-import Option from './Organisms/atoms/Option';
-import Line from './Organisms/atoms/Line';
+import Option from './atoms/Option';
+import Line from './atoms/Line';
 import HomeIcon from '@material-ui/icons/Home';
-import Button from './Organisms/atoms/Button';
+import Button from './atoms/Button';
 import SearchIcon from '@material-ui/icons/Search';
 import LibraryMusicIcon from '@material-ui/icons/LibraryMusic';
+import {BrowserRouter as Router, Switch, Route, Link,} from 'react-router-dom';
 import axios from 'axios';
 
 const SideBackground = styled.div`
@@ -55,7 +56,6 @@ const Sidebar = () => {
     const [playList, setPlayList] = useState([]);
     const token = sessionStorage.getItem('token');
     const user_id = sessionStorage.getItem('userId');
-    // console.log(user_id);
 
     useEffect(() => {
         axios({
@@ -63,7 +63,6 @@ const Sidebar = () => {
                 "Authorization": `Bearer ${token}`
             },
             method: 'GET',
-            // url: `https://api.spotify.com/v1/users/${user_id}/playlists`,
             url: `https://api.spotify.com/v1/me/playlists`,
             data: {
                 limit: "15",
@@ -85,41 +84,19 @@ const Sidebar = () => {
         });
     }, [token, user_id]);
 
-    // async function buttonClick() {
-        
-    //     console.log('안녕');
-
-    //     axios({
-    //         headers: {
-    //             "Authorization": `Bearer ${token}`,
-    //         }, 
-    //         method: 'POST',
-    //         url: `https://api.spotify.com/v1/users/b30w7igvenuo3cclg5y0c7ddn/playlists`,
-    //         data: {
-    //             name: "내플레이리스트",
-    //             public: true,
-    //             collaborative: "",
-    //             description: "",
-    //             'Content-Type': "application/json"
-    //         },
-    //     }).then((res) => {
-    //         console.log(res);
-    
-    //     }).catch(error => {
-    //         console.log(error);
-    //     });
-    // }
-
     return(
         <div>
             <SideBackground>
                 <LogoImg src="https://music-b26f.kxcdn.com/wp-content/uploads/2017/06/635963274692858859903160895_spotify-logo-horizontal-black.jpg"></LogoImg>
-                <Option Icon={HomeIcon} title="Home"/>
-                <Option Icon={SearchIcon} title="Search"/>
-                <Option Icon={LibraryMusicIcon} title="Library"/>
-
-                {/* <Button onClick={buttonClick} title="안녕"/> */}
-                {/* <button onClick={buttonClick}>하이</button> */}
+                <Link to="">
+                    <Option Icon={HomeIcon} title="Home" />
+                </Link>
+                <Link>
+                    <Option Icon={SearchIcon} title="Search"/>
+                </Link>
+                <Link>
+                    <Option Icon={LibraryMusicIcon} title="Library"/>
+                </Link>
 
                 <StringTitle>PLAYLIST</StringTitle>
                 <Line/>
