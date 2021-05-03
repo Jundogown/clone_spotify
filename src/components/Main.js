@@ -3,8 +3,11 @@ import styled from 'styled-components';
 import Sidebar from './Sidebar';
 import Body from './Organisms/Body';
 import Footer from './Organisms/Footer';
-import Search from './Organisms/atoms/Search';
+import Search from './View/Search';
 import axios from 'axios';
+import {BrowserRouter as Router, Switch, Route, Link,} from 'react-router-dom';
+import Home from './View/Home';
+import Library from './View/Library';
 
 const MainContainer = styled.div`
     display: flex;
@@ -34,7 +37,17 @@ const Main = () => {
             <MainContainer>
                 <Sidebar/>
                 <Body>  
-
+                    <Switch>
+                        <Route exact path="/">
+                            <Home />
+                        </Route>
+                        <Route path="/Libary">
+                            <Library />
+                        </Route>
+                        <Route path="/Search">
+                            <Search />
+                        </Route>
+                    </Switch>
                 </Body>
             </MainContainer>
             <Footer/>
