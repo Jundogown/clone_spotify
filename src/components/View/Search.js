@@ -7,7 +7,6 @@ import { Link } from 'react-router-dom';
 import SearchArtistView from './SearchView/SearchArtistView';
 import SearchAlbumView from './SearchView/SearchAlbumView';
 import SearchTrackView from './SearchView/SearchTrackView';
-import MainView from './SearchView/MainView';
 
 const SearchBar = styled.input`
     width: 50vh;
