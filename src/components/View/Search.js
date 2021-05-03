@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useState } from 'react';
 import './Search.css';
 import styled from 'styled-components';
-import VerticalLine from './VerticalLine';
+import VerticalLine from '../atoms/VerticalLine';
 import { Link } from 'react-router-dom';
 import SearchArtistView from './SearchView/SearchArtistView';
 import SearchAlbumView from './SearchView/SearchAlbumView';
@@ -122,10 +122,10 @@ const Search = () => {
                 <button className="btn" onClick={onClick}>Search</button>
             </InputArea>
             <ViewArea>
-                {inputTypeData == 'artist' && <SearchArtistView/>}
+                {/* {inputTypeData == 'artist' && <SearchArtistView/>}
                 {inputTypeData == 'track' && <SearchTrackView/>}
                 {inputTypeData == 'album' && <SearchAlbumView/>}
-                {!inputTypeData && <MainView/>}
+                {!inputTypeData && <MainView/>} */}
             </ViewArea>
         </div>
     )
