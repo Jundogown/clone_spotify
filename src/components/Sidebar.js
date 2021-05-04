@@ -6,7 +6,7 @@ import HomeIcon from '@material-ui/icons/Home';
 import Button from './atoms/Button';
 import SearchIcon from '@material-ui/icons/Search';
 import LibraryMusicIcon from '@material-ui/icons/LibraryMusic';
-import {BrowserRouter as Router, Switch, Route, Link,} from 'react-router-dom';
+import {BrowserRouter,  Router, Switch, Route, Link,} from 'react-router-dom';
 import axios from 'axios';
 
 const SideBackground = styled.div`
@@ -88,15 +88,18 @@ const Sidebar = () => {
         <div>
             <SideBackground>
                 <LogoImg src="https://music-b26f.kxcdn.com/wp-content/uploads/2017/06/635963274692858859903160895_spotify-logo-horizontal-black.jpg"></LogoImg>
-                <Link to="">
-                    <Option Icon={HomeIcon} title="Home" />
-                </Link>
-                <Link>
-                    <Option Icon={SearchIcon} title="Search"/>
-                </Link>
-                <Link>
-                    <Option Icon={LibraryMusicIcon} title="Library"/>
-                </Link>
+
+                <BrowserRouter>
+                    <Link to="/">
+                        <Option Icon={HomeIcon} title="Home" />
+                    </Link>
+                    <Link to="/Search">
+                        <Option Icon={SearchIcon} title="Search"/>
+                    </Link>
+                    <Link to="/Library">
+                        <Option Icon={LibraryMusicIcon} title="Library"/>
+                    </Link>
+                </BrowserRouter>
 
                 <StringTitle>PLAYLIST</StringTitle>
                 <Line/>
