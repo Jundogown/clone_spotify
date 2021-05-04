@@ -15,7 +15,13 @@ const Home =() => {
         console.log(res);
     }).catch(error => {
         console.log(error);
-    })
+    });
+
+    return(
+        <div>
+            HOME
+        </div>
+    )
 }
 
 export default Home;
