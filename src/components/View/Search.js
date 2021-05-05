@@ -105,6 +105,7 @@ const Search = () => {
     }
 
     const inputTypeData = sessionStorage.getItem('inputType');
+    
     // if (loading) {
     //     return <p>Data is loading...</p>;
     // }
