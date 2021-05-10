@@ -16,7 +16,7 @@ const Body = () => {
     return(
         <div>
             <BodyContainer>
-                <Search/>
+                home
             </BodyContainer>
         </div>
     );
