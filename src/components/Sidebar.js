@@ -6,8 +6,11 @@ import HomeIcon from '@material-ui/icons/Home';
 import Button from './atoms/Button';
 import SearchIcon from '@material-ui/icons/Search';
 import LibraryMusicIcon from '@material-ui/icons/LibraryMusic';
-import {BrowserRouter,  Router, Switch, Route, Link,} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Switch, Link} from 'react-router-dom';
 import axios from 'axios';
+import Home from './View/Home'
+import Search from './View/Search'
+import Library from './View/Library'
 
 const SideBackground = styled.div`
     display: flex;
@@ -78,7 +81,8 @@ const Sidebar = () => {
             }
             
             setPlayList(playlist[0]);
-    
+            
+            sessionStorage.setItem('res', res);
         }).catch(error => {
             console.log(error);
         });
@@ -87,26 +91,26 @@ const Sidebar = () => {
     return(
         <div>
             <SideBackground>
-                <LogoImg src="https://music-b26f.kxcdn.com/wp-content/uploads/2017/06/635963274692858859903160895_spotify-logo-horizontal-black.jpg"></LogoImg>
+                <LogoImg src="https://music-b26f.kxcdn.com/wp-content/uploads/2017/06/635963274692858859903160895_spotify-logo-horizontal-black.jpg"/>
 
-                <BrowserRouter>
-                    <Link to="/">
-                        <Option Icon={HomeIcon} title="Home" />
-                    </Link>
-                    <Link to="/Search">
-                        <Option Icon={SearchIcon} title="Search"/>
-                    </Link>
-                    <Link to="/Library">
-                        <Option Icon={LibraryMusicIcon} title="Library"/>
-                    </Link>
-                </BrowserRouter>
+                <Link to="/">
+                    <Option Icon={HomeIcon} title="Home"></Option>
+                </Link>
+                <Link to="/search">
+                    <Option Icon={HomeIcon} title="Search"></Option>
+                </Link>
+                <Link to="/library">
+                    <Option Icon={HomeIcon} title="Library"></Option>
+                </Link>
 
                 <StringTitle>PLAYLIST</StringTitle>
-                <Line/>
-                    {
-                        playList.map(({ name }) => <PrintList>{name}</PrintList>)
-                    }
-                <Option/>
+
+                <Line />
+
+                {playList.map(({ name }) => (
+                <PrintList>{name}</PrintList>
+                ))}
+                
             </SideBackground>
         </div>
     );
