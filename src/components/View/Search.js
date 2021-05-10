@@ -36,6 +36,7 @@ const ViewArea = styled.div`
 `
 
 const Search = () => {
+    
     const [ input, setInput ] = useState({
         data: '',
     });
