@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import axios from 'axios';
 
 const Container = styled.div`
 
@@ -18,18 +19,23 @@ const CreatorName = styled.span`
 `;
 
 const Library =() => {
-    
+//     const res = sessionStorage.getItem('res');
+
+//     const playList = res.map((res) => 
+//         <Container>
+//             <TumnailImg></TumnailImg>
+//             <LibraryName>
+
+//             </LibraryName>
+//             <CreatorName>
+// w
+//             </CreatorName>
+//         </Container>
+//     ); 
 
     return(
-        <Container>
-            <TumnailImg src={}></TumnailImg>
-            <LibraryName>
-
-            </LibraryName>
-            <CreatorName>
-
-            </CreatorName>
-        </Container>
+        // <playList></playList>
+        <div>Library</div>
     )
 }
 
